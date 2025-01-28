@@ -25,3 +25,22 @@ ggplot(Math, aes(x = Grade)) +
   geom_density(stat = "count", fill = "blue", alpha = 0.1) +
   labs(title = "Frekvenční křivka Grade", x = "Grade", y = "Frekvence") +
   theme_minimal()
+
+
+
+
+
+table(Math$Grade)
+cumsum(table(Math$Grade))
+prop.table(table(Math$Grade))
+cumsum(prop.table(table(Math$Grade)))
+
+
+
+
+
+
+
+
+
+

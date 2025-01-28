@@ -60,8 +60,26 @@ ggplot(Math, aes(x = Grade, fill = predicted_grade)) +
   labs(title = "Predicted vs Actual Grade", x = "Actual Grade", y = "Count") +
   theme_minimal()
 
+в том что ниже я не уверен 
+Math$predicted_grade <- predict(model, newdata = Math, type = "class")
 
+# Создание числовых значений для категориального Grade
+Math$grade_numeric <- as.numeric(Math$Grade)
+Math$predicted_numeric <- as.numeric(Math$predicted_grade)
 
+# Вычисление остатков (разница между фактическим и предсказанным)
+Math$residuals <- Math$grade_numeric - Math$predicted_numeric
+
+# Вывод первых значений остатков
+head(Math$residuals)
+
+library(ggplot2)
+
+ggplot(Math, aes(x = predicted_numeric, y = residuals)) +
+  geom_point(color = "blue") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
+  labs(title = "Rezidua pro predikované Grade", x = "Predikované hodnoty", y = "Rezidua (chyby)") +
+  theme_minimal()
 
 
 

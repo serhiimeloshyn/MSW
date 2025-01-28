@@ -36,7 +36,29 @@ prop.table(table(Math$Grade))
 cumsum(prop.table(table(Math$Grade)))
 
 
+2 okruh # Подключаем пакет для порядковой регрессии
+library(MASS)
 
+# Модель порядковой логистической регрессии
+model <- polr(Grade ~ GPAadj + PlcmtScore + Rank + SATM + ACTM, data = Math, method = "logistic")
+
+# Вывод результатов модели
+summary(model)
+
+# Вывод коэффициентов в экспоненциальной форме (одds ratios)
+exp(coef(model))
+
+
+library(ggplot2)
+
+# Создаем предсказанные значения
+Math$predicted_grade <- predict(model, newdata = Math, type = "class")
+
+# Визуализация фактических и предсказанных значений
+ggplot(Math, aes(x = Grade, fill = predicted_grade)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Predicted vs Actual Grade", x = "Actual Grade", y = "Count") +
+  theme_minimal()
 
 
 

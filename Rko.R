@@ -81,6 +81,6 @@ ggplot(Math, aes(x = predicted_numeric, y = residuals)) +
   labs(title = "Rezidua pro predikované Grade", x = "Predikované hodnoty", y = "Rezidua (chyby)") +
   theme_minimal()
 
-
+https://docs.google.com/document/d/1tRNBcJ7EVEuZmXkVf3hLXjie8AHWZ177tJYBKy0zles/edit?tab=t.0#heading=h.15q3e55xuq5f
 
 

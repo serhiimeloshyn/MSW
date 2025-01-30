@@ -83,4 +83,4 @@ ggplot(Math, aes(x = predicted_numeric, y = residuals)) +
 
 https://docs.google.com/document/d/1tRNBcJ7EVEuZmXkVf3hLXjie8AHWZ177tJYBKy0zles/edit?tab=t.0#heading=h.15q3e55xuq5f
 
-
+https://docs.google.com/document/d/1XQCyFJW5FKkd17fKEFhv7FK9P2ZoebiXOkbTZzPk4Qs/edit?usp=sharing

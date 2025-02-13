@@ -39,50 +39,25 @@ barplot(table(Math$Grade), col="purple", main="Sloupcový graf pro proměnnou Gr
 
 
 2 okruh # Подключаем пакет для порядковой регрессии
-library(MASS)
+Příklad s lineární závislostí:
+# Выбираем переменные
+x <- Math$SATM   # замените на нужную переменную
+y <- Math$PSATM  # замените на нужную переменную
 
-# Модель порядковой логистической регрессии
-model <- polr(Grade ~ GPAadj + PlcmtScore + Rank + SATM + ACTM, data = Math, method = "logistic")
+# Вычисление коэффициента корреляции
+cor(x, y)
 
-# Вывод результатов модели
-summary(model)
+# Построение графика рассеяния
+plot(x, y, main = "Scatter plot mezi SATM a PSATM", xlab = "SATM", ylab = "PSATM", pch = 19)
 
-# Вывод коэффициентов в экспоненциальной форме (одds ratios)
-exp(coef(model))
+№Pro sinusoidu:
 
+x <- Math$PlcmtScore  # Независимая переменная
+y <- sin(Math$SATM)   # Преобразуем SATM в синусоидальную форму
 
-library(ggplot2)
+# Вычисляем корреляцию
+correlation <- cor(x, y)
+print(paste("Korelace mezi PlcmtScore a sin(SATM):", correlation))
 
-# Создаем предсказанные значения
-Math$predicted_grade <- predict(model, newdata = Math, type = "class")
-
-# Визуализация фактических и предсказанных значений
-ggplot(Math, aes(x = Grade, fill = predicted_grade)) +
-  geom_bar(position = "dodge") +
-  labs(title = "Predicted vs Actual Grade", x = "Actual Grade", y = "Count") +
-  theme_minimal()
-
-в том что ниже я не уверен 
-Math$predicted_grade <- predict(model, newdata = Math, type = "class")
-
-# Создание числовых значений для категориального Grade
-Math$grade_numeric <- as.numeric(Math$Grade)
-Math$predicted_numeric <- as.numeric(Math$predicted_grade)
-
-# Вычисление остатков (разница между фактическим и предсказанным)
-Math$residuals <- Math$grade_numeric - Math$predicted_numeric
-
-# Вывод первых значений остатков
-head(Math$residuals)
-
-library(ggplot2)
-
-ggplot(Math, aes(x = predicted_numeric, y = residuals)) +
-  geom_point(color = "blue") +
-  geom_hline(yintercept = 0, linetype = "dashed", color = "red") +
-  labs(title = "Rezidua pro predikované Grade", x = "Predikované hodnoty", y = "Rezidua (chyby)") +
-  theme_minimal()
-
-https://docs.google.com/document/d/1tRNBcJ7EVEuZmXkVf3hLXjie8AHWZ177tJYBKy0zles/edit?tab=t.0#heading=h.15q3e55xuq5f
-
-https://docs.google.com/document/d/1XQCyFJW5FKkd17fKEFhv7FK9P2ZoebiXOkbTZzPk4Qs/edit?usp=sharing
+# Рисуем график рассеяния
+plot(x, y, main = "Scatter plot mezi PlcmtScore a sin(SATM)", xlab = "PlcmtScore", ylab = "sin(SATM)", pch = 19)

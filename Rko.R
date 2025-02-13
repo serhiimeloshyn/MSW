@@ -92,8 +92,14 @@ plot(x, y_quad, type = "l", col = "red", main = "Kvadratická závislost", xlab 
 
 
 
+Kontingenční tabulka (pro kategorické proměnné)
+table(Math$Gender, Math$Grade)
+prop.table(table(Math$Gender, Math$Grade))
+mosaicplot(table(Math$Gender, Math$Grade), col = c("red", "blue"), main = "Mosaic Plot: Gender vs. Course Success")
 
-
-
-
+Testování korelace
+# Вычисляем ковариацию между PlcmtScore и SATM
+cov(Math$PlcmtScore, Math$SATM)
+# Вычисляем корреляцию между теми же переменными
+cor(Math$PlcmtScore, Math$SATM)  Вычислив ковариацию, вы увидите, как PlcmtScore и SATM изменяются вместе.
 

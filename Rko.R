@@ -49,6 +49,11 @@ cor(x, y)
 
 # Построение графика рассеяния
 plot(x, y, main = "Scatter plot mezi SATM a PSATM", xlab = "SATM", ylab = "PSATM", pch = 19)
+(Как интерпретировать результат?
+Коэффициент > 0.7 → сильная положительная корреляция
+Коэффициент между 0.3 и 0.7 → средняя положительная корреляция
+Коэффициент < 0.3 → слабая или отсутствующая корреляция
+Отрицательный коэффициент → чем выше одна переменная, тем ниже другая (обратная зависимость).) это для Příklad s lineární závislostí:
 
 №Pro sinusoidu:
 
@@ -61,3 +66,12 @@ print(paste("Korelace mezi PlcmtScore a sin(SATM):", correlation))
 
 # Рисуем график рассеяния
 plot(x, y, main = "Scatter plot mezi PlcmtScore a sin(SATM)", xlab = "PlcmtScore", ylab = "sin(SATM)", pch = 19)
+(nalýza výsledků:
+Tvar závislosti
+
+Z grafu je vidět, že body jsou rozloženy chaoticky, ale hodnoty sin(SATM) se pohybují v rozsahu [-1,1].
+To je typické pro nelineární (sinusovou) závislost.
+Korelace (cor(PlcmtScore, sin(SATM)))
+
+Pravděpodobně je korelační koeficient blízký nule.
+To znamená, že neexistuje lineární vztah mezi proměnnými, ale může existovat nelineární souvislost.) это для Pro sinusoidu обьяснение

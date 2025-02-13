@@ -1,12 +1,17 @@
-load("C:/Users/Владеец/Downloads/Math.RData")
-class(Math$Grade)  # Проверяем класс переменной Grade
+Math$Grade <- factor(Math$Grade, levels = c("B-", "B", "B+", "A-", "A", "A+"), ordered = TRUE)#Преобразует переменную Grade в упорядоченный фактор (ordered factor). Převádí proměnnou Grade na seřazený faktor (ordered factor).
+class(Math$Grade)#Проверяем класс переменной Grade
+table(Math$Grade) #Создает таблицу частот (сколько раз встречается каждая оценка). Vytvoří frekvenční tabulku, která ukazuje, kolikrát se každá známka vyskytuje.
+cumsum(table(Math$Grade))#Каждое значение — это сумма текущей категории и всех предыдущих. Každá hodnota je součet aktuální kategorie a všech předchozích.
+prop.table(table(Math$Grade))#Результат показывает, какую часть от всех данных составляет каждая оценка. Vypočítá relativní četnosti (procentuální zastoupení).
+cumsum(prop.table(table(Math$Grade)))#Вычисляет кумулятивную сумму относительных частот. Vypočítá kumulativní součet relativních četností.
 
-
-Math$Grade <- factor(Math$Grade, levels = c("B-", "B", "B+", "A-", "A", "A+"), ordered = TRUE)
-class(Math$Grade)
-
-table(Math$Grade)
-
+cbind(
+  "bezne abs. cetnosti" = table(Math$Grade),
+  "kumulativni abs. cetnosti" = cumsum(table(Math$Grade)),
+  "bezne rel. cetnosti" = round(prop.table(table(Math$Grade)), 4),
+  "kumulativni rel. cetnosti" = cumsum(round(prop.table(table(Math$Grade)), 4))
+)
+# Эта таблица объединит все вычисленные значения в одном месте.
 
 library(ggplot2)
 ggplot(Math, aes(x = Grade)) +
@@ -20,20 +25,17 @@ pie(grade_counts, main = "Rozložení Grade", col = rainbow(length(grade_counts)
 
 
 
-
 ggplot(Math, aes(x = Grade)) +
   geom_density(stat = "count", fill = "blue", alpha = 0.1) +
   labs(title = "Frekvenční křivka Grade", x = "Grade", y = "Frekvence") +
   theme_minimal()
 
+barplot(table(Math$Grade), col="purple", main="Sloupcový graf pro proměnnou Grade", ylab="Počty")
 
 
 
 
-table(Math$Grade)
-cumsum(table(Math$Grade))
-prop.table(table(Math$Grade))
-cumsum(prop.table(table(Math$Grade)))
+
 
 
 2 okruh # Подключаем пакет для порядковой регрессии

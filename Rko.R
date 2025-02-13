@@ -75,3 +75,25 @@ Korelace (cor(PlcmtScore, sin(SATM)))
 
 Pravděpodobně je korelační koeficient blízký nule.
 To znamená, že neexistuje lineární vztah mezi proměnnými, ale může existovat nelineární souvislost.) это для Pro sinusoidu обьяснение
+
+
+№Nelineární závislost:
+x <- Math$PlcmtScore  # Независимая переменная
+y_quad <- x^2         # Квадратичное преобразование
+
+# Вычисляем корреляцию
+correlation <- cor(y_quad, Math$CourseSuccess)
+print(paste("Korelace mezi PlcmtScore^2 a CourseSuccess:", correlation))
+
+# Рисуем график зависимости
+plot(x, y_quad, type = "l", col = "red", main = "Kvadratická závislost", xlab = "PlcmtScore", ylab = "PlcmtScore^2")
+
+(Если correlation маленький, но на графике заметна изогнутая кривая, то связь есть, но она не линейная.)
+
+
+
+
+
+
+
+

@@ -1,3 +1,5 @@
+У ТЕБЯ ТАКОЙ ЖЕ ХАРАКТЕРИСТИКИ КАТЕГОРИТСКА ПЕРЕМЕННАЯ НО У МЕНЯ ЕЙ ВООБЩЕ НЕ ВИДИТ 
+
 Math$Grade <- factor(Math$Grade, levels = c("B-", "B", "B+", "A-", "A", "A+"), ordered = TRUE)#Преобразует переменную Grade в упорядоченный фактор (ordered factor). Převádí proměnnou Grade na seřazený faktor (ordered factor).
 class(Math$Grade)#Проверяем класс переменной Grade
 table(Math$Grade) #Создает таблицу частот (сколько раз встречается каждая оценка). Vytvoří frekvenční tabulku, která ukazuje, kolikrát se každá známka vyskytuje.
